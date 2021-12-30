@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>Upload</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" 
+         href="{% static 'style.css' %}">
+    </head>
+    <body>
+        <h1>{{ title }}</h1>
+        <h2>ファイルをアップロード</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">アップロード</button>
+        </form>
+        <p><a href="/">一覧画面に戻る</a></p>
+    </body>
+</html>

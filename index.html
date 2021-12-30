@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <title>Top</title>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" 
+         href="{% static 'style.css' %}">
+    </head>
+    <body>
+        <h1>{{ title }}</h1>
+        <table>
+            <tr>
+                <th>Name</th><th>Title</th><th>Upload Date</th><th>Download</th><th>Delete</th>
+            </tr>
+            {% if all_data %}
+            {% for i in all_data %}
+                <tr>
+                    <td>{{ i.name }}</td>
+                    <td>{{ i.title }}</td>
+                    <td>{{ i.upload_date }}</td>
+                    <td><a href="{% url 'download' id=i.id %}" class="download">ダウンロード</a></td>
+                    <td><a href="{% url 'delete' id=i.id %}" class="delete">削除</a></td>
+                </tr>
+            {% endfor %}
+            {%endif%}
+        </table>
+        <p></p>
+        <p><a href="{% url 'upload' %}" class="upload">アップロード画面へ</a></p>
+    </body>
+</html>
